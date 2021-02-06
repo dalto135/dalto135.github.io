@@ -1,0 +1,247 @@
+* {
+    border: 2px solid black;
+    /* border-color: rgba(0, 255, 128, 0.75); */
+    margin: 4px;
+    padding: 4px;
+    font-family:eurostile, sans-serif;
+    font-weight: normal;
+}
+
+a {
+    text-decoration-line: none;
+    font-weight: normal;
+}
+
+:root {
+    --mint: rgba(0, 255, 128, 1);
+    --cloudy: rgba(256, 256, 256, 0.5);
+    --cloudyMint: rgba(0, 255, 128, 0.15);
+    --blue: rgb(0, 0, 64);
+}
+
+/* html, body {
+    border-width: 0;
+} */
+
+html {
+    border-color: black;
+    background-color: rgb(34, 42, 46);
+}
+
+h1 {
+    font-size: 24pt;
+    background-color: var(--mint);
+}
+
+h2 {
+    font-size: 18pt;
+}
+
+p {
+    font-size: 16pt;
+    background: var(--cloudy);    
+}
+
+body {
+    border-color: navy;
+}
+
+header {
+    display: flex;
+    border-color: rgb(0, 80, 80);
+}
+
+section {
+    border-color: darkcyan;
+    display: flex;
+}
+
+#image {
+    display: flex;
+    justify-content: flex-end;
+    background-image: url("solarpunk.png");
+}
+
+#image h1 {
+    margin-top: 100px;
+    background-color: var(--cloudy);
+    border-color: black;
+
+}
+
+div {
+    align-items: center;
+    border-color: green;
+    flex: 1 1;
+}
+
+.title {
+    flex: 0.3 0.3;
+    /* border-right: 4px solid green; */
+    text-align: right;
+    font-size: 4vw;
+}
+
+.title h1 {
+    font-size: 4vw;
+}
+
+#work h2,
+#work a {
+    flex: 1 1;    
+}
+
+#work h2 {
+    height: 300px;
+}
+
+#work a div {
+    /* height: 300px; */
+}
+
+#work div h2 {
+    height: 150px;
+}
+
+#hello {
+    /* background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/800px-SNice.svg.png"); */
+}
+
+.content h2:hover,
+.content a:hover,
+#shortcuts a:hover {
+    color: white;
+    background-image: linear-gradient(var(--mint),
+        navy);
+}
+
+#contact h2:hover,
+.content a:hover,
+#shortcuts a:hover {
+    text-shadow: 2px 2px black;
+}
+
+#contact {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#contact h2 {
+    background-color: var(--cloudy);
+}
+
+#contact a {
+    border-width: 0;
+}
+
+#name {
+    text-align: right;
+    flex: 1 1;
+    
+    /* background-image: linear-gradient(rgba(0, 255, 128, 0.75),
+        rgba(0, 0, 128, 0.75)); */
+}
+
+#name h1 {
+    font-size: 4vw;
+    border-color: var(--mint);
+    color: green;
+    /* text-shadow: 2px 2px green; */
+    background-color: var(--blue);
+}
+
+#shortcuts {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    flex: 2 2;
+}
+
+#shortcuts a,
+#shortcuts button {
+    color: black;
+    background-color: var(--cloudy);
+}
+
+.big {
+    border-color: navy;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#work a {
+    flex: 0.5 0.5;
+    background-color: var(--cloudy);
+}
+
+#hello {
+    background-image: url("https://cdnb.artstation.com/p/assets/images/images/000/561/903/large/derek-weselake-backda.jpg?1426830042");
+}
+
+
+#chitchat {
+    background-image: url("https://www.abc.net.au/reslib/201105/r775562_6639716.jpg");
+}
+
+#goodbye {
+    background-image: url("https://thumbs.dreamstime.com/z/super-trees-gardens-bay-singapore-105551731.jpg");
+}
+
+#yes {
+    background-image: url("https://i.pinimg.com/originals/7f/1e/0d/7f1e0d2ac3bd87d6f57f73492d3bf6d1.jpg");
+}
+
+#no {
+    background-image: url("https://i.pinimg.com/originals/10/33/b7/1033b72b0d4c935ac1151d8cecddac8e.jpg");
+}
+
+img {
+    width: 100%;
+    z-index: 1;
+}
+
+a {
+    font-size: 18pt;
+    font-weight: bold;
+}
+
+#me {
+    flex: 1 1;
+}
+
+footer {
+    border-color: rgb(0, 80, 80);
+    text-align: center;
+}
+
+.content a {
+    color: black;
+}
+
+@media screen and (max-width: 980px) {
+    header, section, #work {
+        display: block;
+    }
+    #name {
+        text-align: center;
+    }
+    #shortcuts {
+        justify-content: center;
+    }
+    .title {
+        text-align: left;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .content, .big, #contact {
+        display: block;
+    }
+    #image {
+        justify-content: center;
+    }
+    #work h2 {
+        height: 150px;
+    }
+}
