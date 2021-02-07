@@ -1,3 +1,4 @@
+/* Creates a thin border and even spacing around every element */
 * {
     border: 2px solid black;
     margin: 4px;
@@ -5,14 +6,14 @@
     font-family: eurostile, sans-serif;
     font-weight: normal;
 }
-
+/* Color variables defined */
 :root {
     --mint: rgb(0, 200, 100);
     --cloudy: rgba(256, 256, 256, 0.5);
     --blue: rgb(0, 0, 64);
     --teal: rgb(0, 80, 80);
 }
-
+/* Sets initial parameters around each type of tag used in the html doc */
 html {
     background-color: rgb(34, 42, 46);
 }
@@ -70,7 +71,7 @@ p {
 a {
     text-decoration-line: none;
 }
-
+/* Specifies text attributes and layout for individual elements */
 #image {
     display: flex;
     justify-content: flex-end;
@@ -99,6 +100,7 @@ a {
     font-weight: normal;
 }
 
+/* Differentiates the first projects from the others with a substantial height difference */
 #work .small h2 {
     height: 300px;
 }
@@ -106,7 +108,7 @@ a {
 #work .big h2 {
     height: 150px;
 }
-
+/* Places a gradient image on certain elements when they are hovered over with the cursor */
 .content a:hover,
 #shortcuts a:hover,
 footer a:hover {
@@ -159,25 +161,25 @@ footer a {
     flex: 0.5 0.5;
     background-color: var(--cloudy);
 }
-
-#hello {
+/* Placeholder images for future projects */
+#wow {
     background-image: url("https://cdnb.artstation.com/p/assets/images/images/000/561/903/large/derek-weselake-backda.jpg?1426830042");
 }
 
 
-#chitchat {
+#project {
     background-image: url("https://www.abc.net.au/reslib/201105/r775562_6639716.jpg");
 }
 
-#goodbye {
+#code {
     background-image: url("https://thumbs.dreamstime.com/z/super-trees-gardens-bay-singapore-105551731.jpg");
 }
 
-#yes {
+#pollution {
     background-image: url("https://i.pinimg.com/originals/7f/1e/0d/7f1e0d2ac3bd87d6f57f73492d3bf6d1.jpg");
 }
 
-#no {
+#spicy {
     background-image: url("https://i.pinimg.com/originals/10/33/b7/1033b72b0d4c935ac1151d8cecddac8e.jpg");
 }
 
@@ -189,13 +191,14 @@ a {
 #me, footer a {
     flex: 1 1;
 }
-
+/* Link text is made black */
 .content a,
 footer a,
 #shortcuts a {
     color: black;
 }
 
+/* Organization of elements changes at varying screen widths */
 @media screen and (max-width: 980px) {
     header, section, #work {
         display: block;
