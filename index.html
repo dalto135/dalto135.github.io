@@ -1,95 +1,34 @@
 <!DOCTYPE html>
-<html id="html">
-    <head>
-        <link rel="stylesheet" href="style.css"/>
-        <title>Portfolio</title>
-    </head>
-
-    <body>
-        <header id="header">
-            <div id="name">
-                <h1>Dalton Wilkins</h1>
-            </div>
-            
-            <div id="shortcuts">
-                <a href="#about-me">About Me</a>
-                <a href="#work-me">Work</a>
-                <a href="#contact-me">Contact Me</a>
-                <a href="https://drive.google.com/file/d/1Uymp4HfRw84MisoEKrQ1Rc7yuc1TOJrn/view?usp=sharing">Resume</a>
-            </div>
-        </header>
-
-        <section id="image">
-            <h1>A vision for the future</h1>
-        </section>
-
-        <section id="about-me">
-            <div class="title">
-                <h1>About Me</h1>
-            </div>
-            
-            <div class="content" id="me">
-                <p>Highly motivated and technically skilled college graduate looking for a challenging entry level coding position. Enjoys working with others to solve complex problems using computer science techniques in a number of computer languages.
-                    ---
-                    Lorem ipsum dolor sit amet, nec at wisi theophrastus, vis elit adipisci inimicus ei. Vis in aperiri maiorum democritum, id inermis blandit mea, sumo nemore platonem no vix. An sit solet tritani detraxit. Iudicabit evertitur no his, eu tollit iuvaret oporteat ius, movet saperet legimus qui te.
-
-Est elit copiosae inimicus in, ut affert congue vim, pri porro mazim no. Duo laudem soluta causae no, pro dicam doming ullamcorper ad. Vidit omnes repudiare pro ad, his ne errem homero fierent, ut fabellas adipiscing mediocritatem his. Mel in accusam assueverit. Has minim veniam sanctus cu, eu latine alienum pri.
-                </p>
-            </div>
-
-        </section>
-
-        <section id="work-me">
-            <div class="title">
-                <h1>Work</h1>
-            </div>
-            
-            <div class="content" id="work">
-                <div class="small">
-                    <h2 id="wow">
-                        <a href="#html">Wow</a>
-                    </h2>
-                </div>
-                
-                <div class="big">
-                    <h2 id="project">
-                        <a href="#html">Such project</a>
-                    </h2>
-                    <h2 id="code">
-                        <a href="#html">Much code</a>
-                    </h2>
-                    
-                    
-                </div>
-                <div class="big">
-                    <h2 id="pollution">
-                        <a href="#html">Pollution</a>
-                    </h2>
-                    <h2 id="spicy">
-                        <a href="#html">This one looks spicy</a>
-                    </h2>
-                    
-                </div>
-                
-                
-            </div>
-        </section>
-
-        <section id="contact-me">
-            <div class="title">
-                <h1>Contact Me</h1>
-            </div>
-            
-            <address class="content">
-                <a href="tel:+16142577681">614-257-7681</a>
-                <a href="mailto:wilkins.271@osu.edu">wilkins.271@osu.edu</a>
-                <a href="https://www.linkedin.com/in/dalton-wilkins-849342162/">LinkedIn</a>
-                <a href="https://github.com/dalto135">GitHub</a>
-            </address>
-        </section>
-
-        <footer>
-            <a href="#html">Footer? I barely know her</a>
-        </footer>
-    </body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Password Generator</h1>
+      </header>
+      <div class="card">
+        <div class="card-header">
+          <h2>Generate a Password</h2>
+        </div>
+        <div class="card-body">
+          <textarea
+            readonly
+            id="password"
+            placeholder="Your Secure Password"
+            aria-label="Generated Password"
+          ></textarea>
+        </div>
+        <div class="card-footer">
+          <button id="generate" class="btn">Generate Password</button>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>

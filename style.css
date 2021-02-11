@@ -1,232 +1,137 @@
-/* Creates a thin border and even spacing around every element */
-* {
-    border: 2px solid black;
-    margin: 4px;
-    padding: 4px;
-    font-family: eurostile, sans-serif;
-    font-weight: normal;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
-/* Color variables defined */
-:root {
-    --mint: rgb(0, 200, 100);
-    --cloudy: rgba(256, 256, 256, 0.5);
-    --blue: rgb(0, 0, 64);
-    --teal: rgb(0, 80, 80);
-}
-/* Sets initial parameters around each type of tag used in the html doc */
-html {
-    background-color: rgb(34, 42, 46);
+
+html,
+body,
+.wrapper {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    border-color: var(--blue);
+  font-family: sans-serif;
+  background-color: #f9fbfd;
+}
+
+.wrapper {
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 header {
-    display: flex;
-    border-color: var(--teal);
+  text-align: center;
+  padding: 20px;
+  padding-top: 0px;
+  color: hsl(206, 17%, 28%);
 }
 
-section {
-    display: flex;
-    border-color: var(--teal);
+.card {
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 5px;
+  border-width: 1px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
+  color: hsl(206, 17%, 28%);
+  font-size: 18px;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 30px 40px;
 }
 
-div,
-address {
-    align-items: center;
-    border-color: green;
-    flex: 1 1;
+.card-header::after {
+  content: " ";
+  display: block;
+  width: 100%;
+  background: #e7e9eb;
+  height: 2px;
 }
 
-footer {
-    border-color: var(--teal);
-    text-align: center;
+.card-body {
+  min-height: 100px;
 }
 
-address {
-    justify-content: space-evenly;
+.card-footer {
+  text-align: center;
 }
 
-address,
-footer {
-    display: flex;
-    flex-wrap: wrap;
+.card-footer::before {
+  content: " ";
+  display: block;
+  width: 100%;
+  background: #e7e9eb;
+  height: 2px;
 }
 
-h1 {
-    font-size: 24pt;
-    background-color: var(--mint);
+.card-footer::after {
+  content: " ";
+  display: block;
+  clear: both;
 }
 
-h2 {
-    font-size: 18pt;
+.btn {
+  border: none;
+  background-color: hsl(360, 91%, 36%);
+  border-radius: 25px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
+    0px;
+  color: hsl(0, 0%, 100%);
+  display: inline-block;
+  font-size: 22px;
+  line-height: 22px;
+  margin: 16px 16px 16px 20px;
+  padding: 14px 34px;
+  text-align: center;
+  cursor: pointer;
 }
 
-p {
-    font-size: 16pt;
-    background: var(--cloudy);
+button[disabled] {
+  cursor: default;
+  background: #c0c7cf;
 }
 
-a {
-    text-decoration-line: none;
-}
-/* Specifies text attributes and layout for individual elements */
-#image {
-    display: flex;
-    justify-content: flex-end;
-    background-image: url("solarpunk.png");
+.float-right {
+  float: right;
 }
 
-#image h1 {
-    margin-top: 100px;
-    background-color: var(--cloudy);
+#password {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  display: block;
+  width: 100%;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 85px;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px dashed #c0c7cf;
+  border-radius: 6px;
+  resize: none;
+  overflow: hidden;
 }
 
-.title {
-    flex: 0.3 0.3;
-    text-align: right;
+@media (max-width: 690px) {
+  .btn {
+    font-size: 1rem;
+    margin: 16px 0px 0px 0px;
+    padding: 10px 15px;
+  }
+
+  #password {
+    font-size: 1rem;
+  }
 }
 
-.title h1 {
-    font-size: 4vw;
-}
-
-#work h2 {
-    flex: 1 1;
-}
-
-#work a {
-    font-weight: normal;
-}
-
-/* Differentiates the first projects from the others with a substantial height difference */
-#work .small h2 {
-    height: 300px;
-}
-
-#work .big h2 {
-    height: 150px;
-}
-/* Places a gradient image on certain elements when they are hovered over with the cursor */
-.content a:hover,
-#shortcuts a:hover,
-footer a:hover {
-    color: white;
-    background-image: linear-gradient(var(--mint),
-        var(--blue));
-    text-shadow: 2px 2px black;
-}
-
-address h2, address a, footer a {
-    background-color: var(--cloudy);
-}
-
-address a,
-footer a {
-    font-weight: normal;
-}
-
-#name {
-    text-align: right;
-    flex: 1 1;
-}
-
-#name h1 {
-    font-size: 4vw;
-    border-color: var(--mint);
-    color: green;
-    background-color: var(--blue);
-}
-
-#shortcuts {
-    display: flex;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-    flex: 2 2;
-}
-
-#shortcuts a {
-    background-color: var(--cloudy);
-    font-weight: normal;
-}
-
-.big, .small {
-    border-color: var(--mint);
-    display: flex;
-    flex-wrap: wrap;
-}
-
-#work a {
-    flex: 0.5 0.5;
-    background-color: var(--cloudy);
-}
-/* Placeholder images for future projects */
-#wow {
-    background-image: url("https://cdnb.artstation.com/p/assets/images/images/000/561/903/large/derek-weselake-backda.jpg?1426830042");
-}
-
-
-#project {
-    background-image: url("https://www.abc.net.au/reslib/201105/r775562_6639716.jpg");
-}
-
-#code {
-    background-image: url("https://thumbs.dreamstime.com/z/super-trees-gardens-bay-singapore-105551731.jpg");
-}
-
-#pollution {
-    background-image: url("https://i.pinimg.com/originals/7f/1e/0d/7f1e0d2ac3bd87d6f57f73492d3bf6d1.jpg");
-}
-
-#spicy {
-    background-image: url("https://i.pinimg.com/originals/10/33/b7/1033b72b0d4c935ac1151d8cecddac8e.jpg");
-}
-
-a {
-    font-size: 18pt;
-    font-weight: bold;
-}
-
-#me, footer a {
-    flex: 1 1;
-}
-/* Link text is made black */
-.content a,
-footer a,
-#shortcuts a {
-    color: black;
-}
-
-/* Organization of elements changes at varying screen widths */
-@media screen and (max-width: 980px) {
-    header, section, #work {
-        display: block;
-    }
-    #name {
-        text-align: center;
-    }
-    #shortcuts {
-        justify-content: center;
-    }
-    .title {
-        text-align: left;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .content, .big, address {
-        display: block;
-    }
-
-    address a {
-        display: block;
-    }
-
-    #image {
-        justify-content: center;
-    }
-    #work .small h2 {
-        height: 150px;
-    }
+@media (max-width: 500px) {
+  .btn {
+    font-size: 0.8rem;
+  }
 }
