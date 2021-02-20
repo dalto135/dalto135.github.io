@@ -1,63 +1,229 @@
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
+let fiveQuestions = [["Commonly used data types DO NOT include:", "1. strings", "2. booleans", "3. alerts", "4. numbers"], 
+["The condition in an if / else statement is enclosed within ___.", "1. quotes", "2. curly brackets", "3. parentheses", "4. square brackets"], 
+["Arrays in javascript can be used to store ___.", "1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"], 
+["String values must be enclosed within ___ when being assigned to variables.", "1. commas", "2. curly brackets", "3. quotes", "4. parentheses"], 
+["A very useful tool used during development and debugging for printing content to the debugger is:", "1. JavaScript", "2. terminal / bash", "3. for loops", "4. console.log"]];
 
-function generatePassword() {
-  // Array of arrays used to let the user choose which character types to include in their password
-  var object = [["Lowercase?", "abcdefghijklmnopqrstuvwxyz"], ["Uppercase?", "ABCDEFGHIJKLMNOPQRSTUVWXYZ"], 
-  ["Numbers?", "0123456789"], ["Special characters?", "[$&+,:;=?@#|'<>.-^*()%!]"]];
-  
-  //While loop that takes an input from the user to be used as the password length. Must be an Integer
-  var strLength = prompt("What is your password length?");
-  var length = parseInt(strLength);
-  while (!Number.isInteger(length) || length < 8 || length > 128) {
-      strLength = prompt("Enter a number between 8 and 128");
-      length = parseInt(strLength);
-  }
+// let five = {
+//     one: ["Commonly used data types DO NOT include:", "1. strings", "2. booleans", "3. alerts", "4. numbers"],
+//     two: ["The condition in an if / else statement is enclosed within ___.", "1. quotes", "2. curly brackets", "3. parentheses", "4. square brackets"], 
+//     three: ["Arrays in javascript can be used to store ___.", "1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"], 
+//     four: ["String values must be enclosed within ___ when being assigned to variables.", "1. commas", "2. curly brackets", "3. quotes", "4. parentheses"], 
+//     fiver: ["A very useful tool used during development and debugging for printing content to the debugger is:", "1. JavaScript", "2. terminal / bash", "3. for loops", "4. console.log"]
+// }
+// let keys = Object.keys(five);
 
-  //While loop that displays a series of prompts to determine what type of password to create,
-  //continues until at least one character type is selected
-  var characters = "";
-  var type = 0;
-  while (type === 0) {
-    for (i = 0; i < object.length; i++) {
-      var input = prompt(object[i][0]);
-      var capInput = input.toUpperCase();
-      while (capInput !== "YES" && capInput !== "NO") {
-        input = prompt("Must answer yes or no");
-        capInput = input.toUpperCase();
-      }
-      if (capInput === "YES") {
-        characters += object[i][1];
-        type++;
-        console.log(characters);
-      }
+let answers = ["3", "3", "4", "4", "4"];
+let i = 0;
+let correct = 0;
+let incorrect = 0;
+let scores = [];
+
+let bold = document.querySelector("#bold");
+let boldTitle = document.querySelector("#bold h2");
+
+let content = document.querySelector("#content");
+let div = document.querySelector("div");
+let footer = document.querySelector("footer");
+let button = document.querySelector(".button");
+let highScoresBtn = document.querySelector("#highscores");
+
+let submit = document.createElement("button");
+let input = document.createElement("input");
+let result = document.createElement("p");
+let play = document.createElement("button");
+let back = document.createElement("button");
+
+let timer = document.querySelector("#time");
+let start = document.querySelector(".start");
+let timeLeft = 75;
+
+let body = document.createElement("body");
+
+function press() {
+        if (this.innerHTML !== "Start Quiz" && this.innerHTML !== "Play again?") {
+            
+            if (this.innerHTML.includes(answers[i])) {
+                correct++;
+                result.innerHTML = "Correct!";
+            }
+            else {
+                incorrect++;
+                result.innerHTML = "Incorrect!";
+            }
+            i++;
+            footer.innerHTML = "";
+            footer.appendChild(result);
+        }
+        
+        // console.log(this.innerHTML);
+        // console.log(answers[i]);
+        // console.log("Correct: " + correct);
+        // console.log("Incorrect: " + incorrect);
+
+    if (i < 5) {
+        bold.innerHTML = "";
+        let question = document.createElement("h2");
+        question.innerHTML = fiveQuestions[i][0];
+        bold.appendChild(question);
+        // console.log(question);
+
+        div.innerHTML = "";
+        for (j = 1; j <= 4; j++) {
+            let one = document.createElement("button");
+            one.classList.add("button");
+            one.innerHTML = fiveQuestions[i][j];
+            div.appendChild(one);
+            one.addEventListener("click", press);
+        }
+        // console.log(div);
     }
-      //Ensures that at least one character type was chosen to create the password
-      if (type === 0) {
-        prompt("You must add at least one character type");
-      }
-  }
-
-  //Employs a random number generator to create the unique password
-  var pass = "";
-  for (var i = 0; i < length; i++) {
-    var random = Math.floor(Math.random() * characters.length);
-    var cha = characters.charAt(random);
-    pass += cha;
-  }
-  console.log("Password: " + pass);
-
-  return pass;
+    else {
+        allDone();
+    }
 }
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+function allDone() {
+        let number = timeLeft;
+        bold.innerHTML = "";
+        let finish = document.createElement("h2");
+        finish.innerHTML = "All done!";
+        bold.appendChild(finish);
+        // console.log(finish);
 
-  passwordText.value = password;
+        div.innerHTML = "";
+        let score = document.createElement("h2");
+        score.innerHTML = "Your final score is " + number + ".";
+        div.appendChild(score);
+        // timeLeft = 0;
+        // console.log(score);
 
+        let initials = document.createElement("h2");
+        initials.innerHTML = "Enter initials:";
+        div.appendChild(initials);
+        // console.log(initials);
+
+        // input.setAttribute("type", "text");
+        div.appendChild(input);
+        // console.log(input);
+
+        submit.classList.add("submit");
+        submit.innerHTML = "Submit";
+        div.appendChild(submit);
+        // console.log(submit);
+
+        // footer.innerHTML = "";
+        result.innerHTML = "Correct: " + correct + " Incorrect: " + incorrect;
+        return number;
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+function submitIt() {
+    let number = allDone();
+    let name = input.value;
+    scores.push([name, number, correct, incorrect]);
+    // console.log(scores[scores.length - 1]);
+    play.innerHTML = "Play again?";
+    play.classList.add("start");
+    play.classList.add("button");
+    bold.innerHTML = "";
+    div.innerHTML = "";
+    div.appendChild(play);
+
+    back.innerHTML = "Back";
+    div.appendChild(back);
+
+    i = 0;
+    correct = 0;
+    incorrect = 0;
+    // console.log(i);
+
+    body.classList.add("poop");
+}
+
+function highScores() {
+    i = 0;
+    correct = 0;
+    incorrect = 0;
+    footer.innerHTML = "";
+    // highScoresBtn.innerHTML = "Main menu";
+    // boldTitle.innerHTML = "High Scores";
+
+    bold.innerHTML = "";
+    let intro = document.createElement("h2");
+    intro.innerHTML = "High Scores";
+    bold.appendChild(intro);
+
+    div.innerHTML = "";
+    for (j in scores) {
+        let hs = document.createElement("p");
+        hs.innerHTML = scores[j][0] + "- Score: " + scores[j][1] + " Correct: " + scores[j][2] + " Incorrect: " + scores[j][3];
+        div.appendChild(hs);
+    }
+    
+    back.innerHTML = "Back";
+    div.appendChild(back);
+
+
+    // for (j in scores) {
+    //     console.log(scores[j]);
+    // }
+}
+
+function goBack() {
+    bold.innerHTML = "";
+    div.innerHTML = "";
+    footer.innerHTML = "";
+    highScoresBtn.innerHTML = "View Highscores";
+
+    let intro = document.createElement("h2");
+    intro.innerHTML = "Coding Quiz Challenge";
+    bold.appendChild(intro);
+
+    let directions = document.createElement("h2");
+    directions.innerHTML = "Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your scoreTime by ten seconds!";
+    div.appendChild(directions);
+
+    button.innerHTML = "";
+    button.classList.add("start");
+    button.classList.add("button");
+    button.innerHTML = "Start Quiz";
+    div.appendChild(button);
+
+    body.removeAttribute("class");
+}
+
+function countdown() {
+    timer.innerHTML = "Time: " + timeLeft;
+
+    if (timeLeft > 0) {
+        let timeInterval = setInterval(function () {
+            timeLeft--;
+            timer.innerHTML = "Time: " + timeLeft;
+
+            if (timeLeft <= 0) {
+                clearInterval(timeInterval);
+                allDone();
+            }
+            // if (timeLeft >= 0) {
+                
+            // }
+        }, 1000);
+    }
+}
+
+button.addEventListener("click", press);
+button.addEventListener("click", countdown);
+
+submit.addEventListener("click", submitIt);
+
+highScoresBtn.addEventListener("click", highScores);
+
+play.addEventListener("click", press);
+play.addEventListener("click", countdown);
+play.addEventListener("click", function() {
+    timeLeft = 75;
+    footer.innerHTML = "";
+})
+
+back.addEventListener("click", goBack);
+

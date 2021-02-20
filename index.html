@@ -1,34 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Password Generator</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Password Generator</h1>
-      </header>
-      <div class="card">
-        <div class="card-header">
-          <h2>Generate a Password</h2>
-        </div>
-        <div class="card-body">
-          <textarea
-            readonly
-            id="password"
-            placeholder="Your Secure Password"
-            aria-label="Generated Password"
-          ></textarea>
-        </div>
-        <div class="card-footer">
-          <button id="generate" class="btn">Generate Password</button>
-        </div>
-      </div>
-    </div>
-    <script src="script.js"></script>
-  </body>
+<html>
+    <head>
+        <title>Code Quiz</title>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <header>
+            <button id="highscores">View Highscores</button>
+            <h1 id="time">Time: 0</h1>
+        </header>
+        <section id="bold">
+            <h2>Coding Quiz Challenge</h2>
+        </section>
+        <section id="content">
+            <div>
+                <h2>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your scoreTime by ten seconds!</h2>
+                <button class="button" class="start">Start Quiz</button>
+            </div>
+        </section>
+        <footer>
+            
+        </footer>
+        <script src="script.js"></script>
+    </body>
 </html>
