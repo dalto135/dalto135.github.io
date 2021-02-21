@@ -4,10 +4,6 @@
     margin: 4px;
     padding: 4px;
     text-align: center;
-    /* font-family: eurostile,
-    Helvetica,
-    Arial,
-    sans-serif; */
 }
 
 :root {
@@ -23,6 +19,7 @@
 
 html {
     background: var(--grey);
+    border: 0;
 }
 
 body {
@@ -34,17 +31,13 @@ header {
     border-color: var(--green);
 }
 
-section {
-
-}
-
 footer {
     border-color: rgb(128, 128, 64);
 }
 
 div {
-    display: flex;
-    flex-direction: column;
+    display: block;
+    border: 0;
 }
 
 h1,
@@ -60,6 +53,8 @@ button {
 
 #content {
     border-color:rgb(128, 0, 64);
+    display: flex;
+    flex-direction: column;
 }
 
 header h1 {
