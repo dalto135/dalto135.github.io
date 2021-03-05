@@ -1,23 +1,19 @@
 //Global variables
 let input = document.querySelector(".input");
 let button = document.querySelector("button");
-let search = document.querySelector("#search");
 let current = document.querySelector("#current");
-let week = document.querySelector("#week");
-
-// let historyList = document.querySelector(".history");
-let historyCount = document.querySelector(".historycount");
 
 //Function that populates the search history
 button.addEventListener("click", createHistory);
 function createHistory() {
+  let historyCount = document.querySelector(".historycount");
   let history = document.createElement("button");
   let br = document.createElement("br");
-  historyCount.classList.add("purple");
-  console.log("hello");
 
   history.innerHTML = input.value;
   history.classList.add("history");
+
+  historyCount.classList.add("purple");
   historyCount.appendChild(history);
   historyCount.appendChild(br);
 
@@ -34,7 +30,6 @@ function createHistory() {
 button.addEventListener("click", getCurrent);
 function getCurrent() {
     let requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + input.value + "&appid=de53a40654766cb8ce20288a99c9f736";
-    console.log(requestUrl);
 
     fetch(requestUrl)
       .then(function(response) {
@@ -51,7 +46,6 @@ function getCurrent() {
         let image = document.createElement("img");
         image.setAttribute("src", "https://openweathermap.org/img/wn/" + data["weather"][0]["icon"] + "@2x.png");
         current.children[0].appendChild(image);
-        // current.children[0].innerHTML += image;
 
         current.children[1].innerHTML = "Temperature: " + tempF + " F";
         current.children[2].innerHTML = "Humidity: " + data["main"]["humidity"] + "%";
@@ -60,18 +54,15 @@ function getCurrent() {
         let lat = data["coord"]["lat"];
         let lon = data["coord"]["lon"];
         getFiveDay(lat, lon);
-        
-
       })
       .catch(function() {
         console.log("Error");
       });
 }
 
-//Function that accesses the UV Index and five day forecast
+//Function that accesses the UV Index and five day forecast, this function is called in the getCurrent function
 function getFiveDay(lat, lon) {
     let requestUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=de53a40654766cb8ce20288a99c9f736";
-    console.log(requestUrl);
 
     fetch(requestUrl)
       .then(function(response) {
@@ -81,16 +72,13 @@ function getFiveDay(lat, lon) {
         console.log(data);
         current.children[4].innerHTML = "UV Index: " + data["current"]["uvi"];
 
+        let week = document.querySelector("#week");
         week.innerHTML = "";
         for (i = 1; i <= 5; i++) {
             let tempD = (data["daily"][i]["temp"]["day"] - 273.15) * 9/5 + 32;
-            // let tempD = data["list"][i]["temp"]["day"]["imperial"];
             let tempF = tempD.toFixed(2);
-            
             let day = document.createElement("div");
-
             let d = parseInt(moment().format("d")) + i;
-            console.log(d);
 
             let date = document.createElement("p");
             date.innerHTML = moment().format("M/" + d + "/YYYY");
@@ -110,10 +98,8 @@ function getFiveDay(lat, lon) {
 
             week.appendChild(day);
         }
-
       })
       .catch(function() {
         console.log("Error");
       });
 }
-
