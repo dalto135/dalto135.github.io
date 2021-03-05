@@ -1,39 +1,16 @@
-section, ul, #city, #week {
+section, #city, #week, #input {
     border: 0;
     margin: 0;
     padding: 0;
 }
 
-#input, #week {
-    display: flex;
+#week {
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-input {
-    flex: 5 5;
-}
-
-#current, #week div {
-    background: var(--cloudy);
-    border-color: black;
-}
-
-#search, #fiveday {
-    border-color: var(--teal);
-}
-
-#city {
-    flex: 2 2;
-}
-
-h2, #city h1, #city p {
-    text-align: left;
-}
-
-
-
-p, #current h1 {
-    background: 0;
-    border: 0;
+#week div {
+    flex: 0 0;
 }
 
 p {
@@ -42,4 +19,70 @@ p {
 
 image {
     max-height: 10px;
+}
+
+input {
+    flex: 5 5;
+}
+
+img {
+    background: rgb(135, 168, 179);
+}
+
+#input, #week {
+    display: flex;
+}
+
+#searchit {
+    border-color: var(--teal);
+}
+
+#current, #week div {
+    background: var(--cloudy);
+    border-color: black;
+}
+
+/* #search {
+    border-color: var(--niceTeal);
+} */
+
+#city {
+    flex: 3 3;
+}
+
+h2, #city h1, #city p {
+    text-align: left;
+}
+
+p, #current h1 {
+    background: 0;
+    border: 0;
+}
+
+#red {
+    border-color: var(--red);
+}
+
+#fiveday {
+    border-color: var(--yellow);
+}
+
+.historycount {
+    display: flex;
+    flex-direction: column-reverse;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.purple {
+    border: 2px solid rgb(83, 53, 99);
+    margin: 4px;
+    padding: 4px;
+}
+
+@media screen and (max-width: 980px) {
+    section {
+        display: block;
+    }
 }
