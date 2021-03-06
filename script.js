@@ -2,28 +2,55 @@
 let input = document.querySelector(".input");
 let button = document.querySelector("button");
 let current = document.querySelector("#current");
+let historyCount = document.querySelector(".historycount");
+
+//Populates the search history upon page refresh using localStorage
+let array = [];
+let localArray = JSON.parse(localStorage.getItem("array"));
+if (localArray !== null) {
+  array = localArray;
+}
+
+for (let i = 0; i < array.length; i++) {
+  let rem = document.createElement("button");
+  rem.classList.add("history");
+  rem.innerHTML = array[i];
+  historyCount.appendChild(rem);
+  historyCount.classList.add("purple");
+
+  rem.addEventListener("click", function() {
+    console.log(this.innerHTML);
+    input.value = this.innerHTML;
+  })
+  rem.addEventListener("click", getCurrent);
+  rem.addEventListener("click", createHistory);
+}
+
 
 //Function that populates the search history
 button.addEventListener("click", createHistory);
 function createHistory() {
-  let historyCount = document.querySelector(".historycount");
+  
   let history = document.createElement("button");
-  let br = document.createElement("br");
-
+  
   history.innerHTML = input.value;
   history.classList.add("history");
 
   historyCount.classList.add("purple");
   historyCount.appendChild(history);
-  historyCount.appendChild(br);
+  
+  array.push(history.innerHTML);
+  localStorage.setItem("array", JSON.stringify(array));
 
   history.addEventListener("click", function() {
-      console.log(this.innerHTML);
-      input.value = this.innerHTML;
+    console.log(this.innerHTML);
+    input.value = this.innerHTML;
   })
   history.addEventListener("click", getCurrent);
   history.addEventListener("click", createHistory);
 }
+
+
 
 
 //Function that populates a field with the current weather conditions of the desired city
@@ -60,7 +87,7 @@ function getCurrent() {
       });
 }
 
-//Function that accesses the UV Index and five day forecast, this function is called in the getCurrent function
+//Function that accesses the UV Index and five day forecast, this function is called by the getCurrent function
 function getFiveDay(lat, lon) {
     let requestUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=de53a40654766cb8ce20288a99c9f736";
 

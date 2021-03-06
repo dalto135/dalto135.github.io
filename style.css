@@ -43,6 +43,12 @@ img {
     border-color: black;
 }
 
+#week div, #input button {
+    background: rgb(0, 96, 128);
+    color: white;
+    text-shadow: 2px 2px 2px black;
+}
+
 #city {
     flex: 3 3;
 }
