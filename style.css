@@ -3,7 +3,7 @@
     --purple: rgb(83, 53, 99);
 }
 
-section, #city, #week, #input {
+section, #city, #week, #input, .empty {
     border: 0;
     margin: 0;
     padding: 0;
@@ -43,7 +43,7 @@ img {
     border-color: black;
 }
 
-#week div, #input button {
+#week div, #input button, #clear {
     background: rgb(0, 96, 128);
     color: white;
     text-shadow: 2px 2px 2px black;

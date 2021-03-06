@@ -1,8 +1,11 @@
 //Global variables
-let input = document.querySelector(".input");
-let button = document.querySelector("button");
+let input = document.querySelector("input");
 let current = document.querySelector("#current");
 let historyCount = document.querySelector(".historycount");
+
+let button = document.querySelector("#searchcity");
+button.addEventListener("click", createHistory);
+button.addEventListener("click", getCurrent);
 
 //Populates the search history upon page refresh using localStorage
 let array = [];
@@ -19,16 +22,23 @@ for (let i = 0; i < array.length; i++) {
   historyCount.classList.add("purple");
 
   rem.addEventListener("click", function() {
-    console.log(this.innerHTML);
     input.value = this.innerHTML;
   })
   rem.addEventListener("click", getCurrent);
   rem.addEventListener("click", createHistory);
 }
 
+//Clears search history
+let clear = document.querySelector("#clear");
+clear.addEventListener("click", function() {
+  array = [];
+  localStorage.setItem("array", JSON.stringify(array));
+  historyCount.innerHTML = "";
+  historyCount.classList.remove("purple");
+})
 
-//Function that populates the search history
-button.addEventListener("click", createHistory);
+//Populates the search history when the user types in cities
+
 function createHistory() {
   
   let history = document.createElement("button");
@@ -43,7 +53,6 @@ function createHistory() {
   localStorage.setItem("array", JSON.stringify(array));
 
   history.addEventListener("click", function() {
-    console.log(this.innerHTML);
     input.value = this.innerHTML;
   })
   history.addEventListener("click", getCurrent);
@@ -53,8 +62,7 @@ function createHistory() {
 
 
 
-//Function that populates a field with the current weather conditions of the desired city
-button.addEventListener("click", getCurrent);
+//Populates a field with the current weather conditions of the desired city
 function getCurrent() {
     let requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + input.value + "&appid=de53a40654766cb8ce20288a99c9f736";
 
@@ -87,7 +95,7 @@ function getCurrent() {
       });
 }
 
-//Function that accesses the UV Index and five day forecast, this function is called by the getCurrent function
+//Accesses the UV Index and five day forecast, this function is called by the getCurrent function
 function getFiveDay(lat, lon) {
     let requestUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=de53a40654766cb8ce20288a99c9f736";
 
