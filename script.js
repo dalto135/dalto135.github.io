@@ -38,7 +38,6 @@ clear.addEventListener("click", function() {
 })
 
 //Populates the search history when the user types in cities
-
 function createHistory() {
   
   let history = document.createElement("button");
@@ -109,11 +108,11 @@ function getFiveDay(lat, lon) {
 
         let week = document.querySelector("#week");
         week.innerHTML = "";
-        for (i = 1; i <= 5; i++) {
+        for (let i = 1; i <= 5; i++) {
             let tempD = (data["daily"][i]["temp"]["day"] - 273.15) * 9/5 + 32;
             let tempF = tempD.toFixed(2);
             let day = document.createElement("div");
-            let d = parseInt(moment().format("d")) + i;
+            let d = parseInt(moment().format("D")) + i;
 
             let date = document.createElement("p");
             date.innerHTML = moment().format("M/" + d + "/YYYY");
